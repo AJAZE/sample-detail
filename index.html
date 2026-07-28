@@ -2,99 +2,151 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <!-- 모바일/PC 화면 크기 자동 맞춤 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 검색엔진 노출 차단 (구글, 네이버 검색 안 됨) -->
-  <meta name="robots" content="noindex, nofollow">
   <style>
-    .section {background:#F2F3FD; border:1.5px solid #B8BCEC; border-radius:14px; padding:28px 36px; text-align:center}
-    .section .section-title {display:inline-block;background:#B8BCEC;color:#FFFFFF;font-weight:700;font-size:16px;letter-spacing:.08em;padding:6px 22px;border-radius:6px;margin-bottom:18px;}
-    .section  .part1 {background:#FFFFFF;border:1px solid rgba(107,112,200,0.18);border-radius:8px;padding:16px 20px;}
-    .part1 .part-title {font-weight:700;color:#4A50A8;font-size:13px;margin-bottom:8px;}
-    .part1 .part-sub {font-size:12.5px;color:#252558;line-height:2;}
-    
-    
-    .wrapper{display: flex; flex-direction: column;}
-    
-    .tab{cursor: pointer; padding: 10px 20px; margin: 0px 2px; display: inline-block; border-radius: 3px 3px 0px 0px;
+    .section {
+      background:#F2F3FD; 
+      border:1.5px solid #B8BCEC; 
+      border-radius:14px; 
+      padding:28px 36px; 
+      text-align:center;
     }
-    
-    .panels{margin:10px 0;}
-    
-    .panel{
-        display: none;
+    .section .section-title {
+      display:inline-block;
+      background:#B8BCEC;
+      color:#FFFFFF;
+      font-weight:700;
+      font-size:16px;
+      letter-spacing:.08em;
+      padding:6px 22px;
+      border-radius:6px;
+      margin-bottom:18px;
     }
-    
-    .panel-title{
-        font-size: 1.5em;
-        font-weight: bold;
+    .section .part1 {
+      background:#FFFFFF;
+      border:1px solid rgba(107,112,200,0.18);
+      border-radius:8px;
+      padding:16px 20px;
     }
-    
-    .radio{
-         display: none;  /*체크박스 숨기기 */
+    .part1 .part-title {
+      font-weight:700;
+      color:#4A50A8;
+      font-size:13px;
+      margin-bottom:8px;
     }
+    .part1 .part-sub {
+      font-size:12.5px;
+      color:#252558;
+      line-height:2;
+    }
+
+    .wrapper { display: flex; flex-direction: column; }
     
-    /* display: none인 설명창을 각 조건에 따라 block해주기 */
-    #SD-1:checked ~ .panels #SD-1-panel,
-    #SD-2:checked ~ .panels #SD-2-panel,
-    #LD:checked ~ .panels #LD-panel{
-        display: block;
+    .tab {
+      cursor: pointer; 
+      padding: 10px 20px; 
+      margin: 0px 2px; 
+      display: inline-block; 
+      border-radius: 6px;
+      opacity: 0.6; /* 비활성화 탭 투명도 */
+      transition: 0.2s;
+    }
+
+    .panels { margin: 10px 0; }
+    
+    .panel { display: none; }
+    
+    .panel-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .radio { display: none; } /* 체크박스 숨기기 */
+
+    /* 탭 선택 시 화면 표시 및 버튼 스타일 변경 */
+    #SD1:checked ~ .tabs #SD1-tab,
+    #SD2:checked ~ .tabs #SD2-tab,
+    #LD:checked ~ .tabs #LD-tab {
+      opacity: 1;
+      background: #4A50A8; /* 선택된 탭 강조 색상 */
+    }
+
+    #SD1:checked ~ .panels #SD1-panel,
+    #SD2:checked ~ .panels #SD2-panel,
+    #LD:checked ~ .panels #LD-panel {
+      display: block;
     }
   </style>
-</head>
+
   <script>
-  // 탭 클릭 등 내용이 바뀌어 높이가 변할 때 부모 창(아트머그)으로 높이 전달
-  function sendHeight() {
-    var height = document.documentElement.scrollHeight || document.body.scrollHeight;
-    window.parent.postMessage({ frameHeight: height }, '*');
-  }
+    function sendHeight() {
+      var height = document.documentElement.scrollHeight || document.body.scrollHeight;
+      window.parent.postMessage({ frameHeight: height }, '*');
+    }
 
-  // 페이지 로드 시 & 화면 크기 변경 시 높이 전송
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
 
-  // 탭 버튼들을 누를 때마다 높이 재측정 (탭 버튼 클래스/태그에 맞춰 호출해주면 더욱 좋습니다)
-  document.addEventListener('click', function() {
-    setTimeout(sendHeight, 100); // 탭 전환 애니메이션 등을 고려해 0.1초 뒤 실행
-  });
-</script>
+    document.addEventListener('click', function() {
+      setTimeout(sendHeight, 100);
+    });
+  </script>
+</head>
 <body>
-<div style="max-width:1280px;margin:48px auto 80px;padding:0 5%;display:flex;flex-direction:column;gap:28px">
-<!-- ══ SECTIONS ══ -->
-<!-- 1. 주의사항 -->
-<div class="section">
-<div class="section-title">주의사항</div>
-<div class="part1">&nbsp; &nbsp; &nbsp; &nbsp; <div class="part-title">	내보내기 데이터(moc3)의 판매입니다. </div>&nbsp; &nbsp; &nbsp; &nbsp;<div class="part-sub"> 완성된 cmo3 파일은 제공하지 않습니다.</div>&nbsp; &nbsp; &nbsp; <div style="font-size:12.5px;color:#252558;line-height:2"></div> </div>&nbsp; &nbsp; &nbsp; <div class="part1">&nbsp; &nbsp; &nbsp; &nbsp; <div class="part-title">	작업물은 작가의 샘플로서 포트폴리오로 기재될 수 있습니다.</div>&nbsp; &nbsp; &nbsp; &nbsp; <div class="part-sub"> 작업물 공개일 조정이 필요할 경우 해당 작업 마무리 전 문의 바랍니다.</div>&nbsp; &nbsp; &nbsp; </div>&nbsp; &nbsp; <div class="part1">&nbsp; &nbsp; &nbsp; &nbsp; <div class="part-title">	본 상품은 디지털 콘텐츠로, 환불 및 교환이 불가합니다.</div>&nbsp; &nbsp; &nbsp; &nbsp; <div class="part-sub"> 예약 후 환불의 경우 90%, 작업 시작 후 환불은 아래 참조 부탁드립니다. </div>&nbsp; &nbsp; &nbsp; </div></div>&nbsp; </div>&nbsp; 
-style=
 
-<!-- 상세 설명 -->
-<div style="max-width:1280px;margin:48px auto 80px;padding:0 5%;display:flex;flex-direction:column;gap:28px">
-<div class="wrapper section">
-<input class ="radio" type="radio" name="group" id="SD1">
-<input class ="radio" type="radio" name="group" id="SD2">
-<input class ="radio" type="radio" name="group" id="LD" checked>
-<div class="tabs">
-<label class = "tab section-title" id= "SD1-tab" for="one">SD simple</label>
-<label class = "tab section-title" id= "two-tab" for="two">SD basic</label>
-<label class = "tab section-title" id= "three-tab" for="three">LD basic</label></div>
-<div class="panels part1">
-<div class="panel" id = "SD1-panel">
-<div class="panel-title">첫번째</div>
-<p>첫번째 탭 입니다.</p>
-</div>
-<div class="panel" id = "SD2-panel">
-<div class="panel-title">두번째</div>
-<p>두번째 탭 입니다.</p>
-</div>
-<div class="panel" id = "LD-panel">
-<div class="panel-title">세번째</div>
-<p>세번째 탭 입니다.</p>
-            </div>
+  <!-- 1. 주의사항 -->
+  <div style="max-width:1280px; margin:48px auto 28px; padding:0 5%;">
+    <div class="section">
+      <div class="section-title">주의사항</div>
+      <div class="part1" style="margin-bottom: 12px;">
+        <div class="part-title">내보내기 데이터(moc3)의 판매입니다.</div>
+        <div class="part-sub">완성된 cmo3 파일은 제공하지 않습니다.</div>
+      </div>
+      <div class="part1" style="margin-bottom: 12px;">
+        <div class="part-title">작업물은 작가의 샘플로서 포트폴리오로 기재될 수 있습니다.</div>
+        <div class="part-sub">작업물 공개일 조정이 필요할 경우 해당 작업 마무리 전 문의 바랍니다.</div>
+      </div>
+      <div class="part1">
+        <div class="part-title">본 상품은 디지털 콘텐츠로, 환불 및 교환이 불가합니다.</div>
+        <div class="part-sub">예약 후 환불의 경우 90%, 작업 시작 후 환불은 아래 참조 부탁드립니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 상세 설명 (탭 영역) -->
+  <div style="max-width:1280px; margin:0 auto 80px; padding:0 5%;">
+    <div class="wrapper section">
+      
+      <!-- 라디오 버튼 (ID와 for값이 일치해야 함) -->
+      <input class="radio" type="radio" name="group" id="SD1">
+      <input class="radio" type="radio" name="group" id="SD2">
+      <input class="radio" type="radio" name="group" id="LD" checked>
+
+      <!-- 탭 버튼들 -->
+      <div class="tabs">
+        <label class="tab section-title" id="SD1-tab" for="SD1">SD simple</label>
+        <label class="tab section-title" id="SD2-tab" for="SD2">SD basic</label>
+        <label class="tab section-title" id="LD-tab" for="LD">LD basic</label>
+      </div>
+
+      <!-- 패널 콘텐츠 -->
+      <div class="panels part1">
+        <div class="panel" id="SD1-panel">
+          <div class="panel-title">첫번째 (SD simple)</div>
+          <p>첫번째 탭 내용입니다.</p>
         </div>
-    </div></div>
+        <div class="panel" id="SD2-panel">
+          <div class="panel-title">두번째 (SD basic)</div>
+          <p>두번째 탭 내용입니다.</p>
+        </div>
+        <div class="panel" id="LD-panel">
+          <div class="panel-title">세번째 (LD basic)</div>
+          <p>세번째 탭 내용입니다.</p>
+        </div>
+      </div>
 
-<!-- 3. 가격표 -->&nbsp; <div style="background:#F5F5FD;border:1px solid #C8CCEE;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(180,150,0,0.08)">&nbsp; &nbsp; <div style="background:#E0E4F8;padding:0 14px;height:36px;display:flex;align-items:center;border-bottom:1px solid #C8CCEE">&nbsp; &nbsp; &nbsp; <div style="font-size:13px;font-weight:600;color:#38389A;letter-spacing:.06em;flex:1;text-align:center">💰 가격표</div>&nbsp; &nbsp; </div>&nbsp; &nbsp; <div style="padding:24px 28px;background:#FFFFFF">&nbsp; &nbsp; &nbsp; <!-- 일러스트 only -->&nbsp; &nbsp; &nbsp; <div id="price-grid-1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">&nbsp; &nbsp; &nbsp; &nbsp; <div style="background:#F2F3FD;border:1px solid #E5E7FA;border-radius:14px;padding:20px 22px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-<!-- 3.1 리깅 only -->&nbsp; &nbsp; &nbsp; <div id="price-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">&nbsp; &nbsp; &nbsp; &nbsp; <div style="background:#F2F3FD;border:1px solid #E5E7FA;border-radius:14px;padding:20px 22px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:#A8A8CC;text-transform:uppercase;margin-bottom:8px">리깅 only</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:16px;font-weight:600;color:#1A1C48;margin-bottom:4px">허리까지 리깅</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:12px;color:#585898;margin-bottom:12px">일러스트 지참 · 리깅만 의뢰</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;color:#4A50A8;line-height:1">400,000<small style="font-size:16px">원</small></div>&nbsp; &nbsp; &nbsp; &nbsp; </div>&nbsp; &nbsp; &nbsp; &nbsp; <div style="background:#F2F3FD;border:1px solid #E5E7FA;border-radius:14px;padding:20px 22px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:#A8A8CC;text-transform:uppercase;margin-bottom:8px">리깅 only</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:16px;font-weight:600;color:#1A1C48;margin-bottom:4px">전신 리깅</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-size:12px;color:#585898;margin-bottom:12px">일러스트 지참 · 리깅만 의뢰</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;color:#4A50A8;line-height:1">800,000<small style="font-size:16px">원</small></div>&nbsp; &nbsp; &nbsp; &nbsp; </div>&nbsp; &nbsp; &nbsp; </div>&nbsp; &nbsp; &nbsp; <div style="display:flex;align-items:center;gap:12px;margin:20px 0;font-size:12px;color:#A8A8CC">&nbsp; &nbsp; &nbsp; &nbsp; <div style="flex:1;height:1px;background:rgba(107,112,200,0.18)"></div>&nbsp; &nbsp; &nbsp; &nbsp; <span>일러스트 + 리깅 패키지</span>&nbsp; &nbsp; &nbsp; &nbsp; <div style="flex:1;height:1px;background:rgba(107,112,200,0.18)"></div>
+    </div>
+  </div>
 
 </body>
 </html>
