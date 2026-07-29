@@ -2,151 +2,311 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <style>
-    .section {
-      background:#F2F3FD; 
-      border:1.5px solid #B8BCEC; 
-      border-radius:14px; 
-      padding:28px 36px; 
-      text-align:center;
-    }
-    .section .section-title {
-      display:inline-block;
-      background:#B8BCEC;
-      color:#FFFFFF;
-      font-weight:700;
-      font-size:16px;
-      letter-spacing:.08em;
-      padding:6px 22px;
-      border-radius:6px;
-      margin-bottom:18px;
-    }
-    .section .part1 {
-      background:#FFFFFF;
-      border:1px solid rgba(107,112,200,0.18);
-      border-radius:8px;
-      padding:16px 20px;
-    }
-    .part1 .part-title {
-      font-weight:700;
-      color:#4A50A8;
-      font-size:13px;
-      margin-bottom:8px;
-    }
-    .part1 .part-sub {
-      font-size:12.5px;
-      color:#252558;
-      line-height:2;
-    }
-
-    .wrapper { display: flex; flex-direction: column; }
-    
-    .tab {
-      cursor: pointer; 
-      padding: 10px 20px; 
-      margin: 0px 2px; 
-      display: inline-block; 
-      border-radius: 6px;
-      opacity: 0.6; /* 비활성화 탭 투명도 */
-      transition: 0.2s;
-    }
-
-    .panels { margin: 10px 0; }
-    
-    .panel { display: none; }
-    
-    .panel-title {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .radio { display: none; } /* 체크박스 숨기기 */
-
-    /* 탭 선택 시 화면 표시 및 버튼 스타일 변경 */
-    #SD1:checked ~ .tabs #SD1-tab,
-    #SD2:checked ~ .tabs #SD2-tab,
-    #LD:checked ~ .tabs #LD-tab {
-      opacity: 1;
-      background: #4A50A8; /* 선택된 탭 강조 색상 */
-    }
-
-    #SD1:checked ~ .panels #SD1-panel,
-    #SD2:checked ~ .panels #SD2-panel,
-    #LD:checked ~ .panels #LD-panel {
-      display: block;
-    }
-  </style>
-
-  <script>
-    function sendHeight() {
-      var height = document.documentElement.scrollHeight || document.body.scrollHeight;
-      window.parent.postMessage({ frameHeight: height }, '*');
-    }
-
-    window.addEventListener('load', sendHeight);
-    window.addEventListener('resize', sendHeight);
-
-    document.addEventListener('click', function() {
-      setTimeout(sendHeight, 100);
-    });
-  </script>
 </head>
 <body>
 
   <!-- 1. 주의사항 -->
-  <div style="max-width:1280px; margin:48px auto 28px; padding:0 5%;">
-    <div class="section">
-      <div class="section-title">주의사항</div>
-      <div class="part1" style="margin-bottom: 12px;">
-        <div class="part-title">내보내기 데이터(moc3)의 판매입니다.</div>
-        <div class="part-sub">완성된 cmo3 파일은 제공하지 않습니다.</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; background-color: #f5f7fa; font-family: 'Noto Sans KR', sans-serif;">
+
+<div class="container" style="max-width: 100%; margin: 0 auto; background: #ffffff; padding: 28px; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif; color: #3A4750; box-sizing: border-box;">
+
+  <!-- 1. 주의사항 영역 -->
+  <div style="background: #F3F8F2; border: 1.5px solid #C8E6C9; border-radius: 12px; padding: 20px 22px; text-align: center; margin-bottom: 28px;">
+    <div style="display: inline-block; background: #7BAE7F; color: #FFFFFF; font-weight: 700; font-size: 15px; letter-spacing: .05em; padding: 6px 22px; border-radius: 6px; margin-bottom: 16px;">
+      주의사항
+    </div>
+    <div style="background: #FFFFFF; border: 1px solid #E8F5E9; border-radius: 8px; padding: 16px 20px; text-align: center;">
+      <div style="padding: 4px 0;">
+        <div style="font-weight: 700; color: #2E7D32; font-size: 14px; margin-bottom: 4px;">내보내기 데이터(moc3)의 판매입니다.</div>
+        <div style="font-size: 13px; color: #4A5568; line-height: 1.6;">완성된 cmo3 파일은 제공하지 않습니다.</div>
       </div>
-      <div class="part1" style="margin-bottom: 12px;">
-        <div class="part-title">작업물은 작가의 샘플로서 포트폴리오로 기재될 수 있습니다.</div>
-        <div class="part-sub">작업물 공개일 조정이 필요할 경우 해당 작업 마무리 전 문의 바랍니다.</div>
+      <div style="border-top: 1px dashed #C8E6C9; margin: 12px 15px;"></div>
+      <div style="padding: 4px 0;">
+        <div style="font-weight: 700; color: #2E7D32; font-size: 14px; margin-bottom: 4px;">작업물은 작가의 샘플로서 포트폴리오로 기재될 수 있습니다.</div>
+        <div style="font-size: 13px; color: #4A5568; line-height: 1.6;">작업물 공개일 조정이 필요할 경우 해당 작업 마무리 전 문의 바랍니다.</div>
       </div>
-      <div class="part1">
-        <div class="part-title">본 상품은 디지털 콘텐츠로, 환불 및 교환이 불가합니다.</div>
-        <div class="part-sub">예약 후 환불의 경우 90%, 작업 시작 후 환불은 아래 참조 부탁드립니다.</div>
+      <div style="border-top: 1px dashed #C8E6C9; margin: 12px 15px;"></div>
+      <div style="padding: 4px 0;">
+        <div style="font-weight: 700; color: #2E7D32; font-size: 14px; margin-bottom: 4px;">본 상품은 디지털 콘텐츠로, 환불 및 교환이 불가합니다.</div>
+        <div style="font-size: 13px; color: #4A5568; line-height: 1.6;">예약 후 환불의 경우 90%, 작업 시작 후 환불은 문의 부탁드립니다.</div>
       </div>
     </div>
   </div>
 
-  <!-- 2. 상세 설명 (탭 영역) -->
-  <div style="max-width:1280px; margin:0 auto 80px; padding:0 5%;">
-    <div class="wrapper section">
-      
-      <!-- 라디오 버튼 (ID와 for값이 일치해야 함) -->
-      <input class="radio" type="radio" name="group" id="SD1">
-      <input class="radio" type="radio" name="group" id="SD2">
-      <input class="radio" type="radio" name="group" id="LD" checked>
+
+  <!-- 2. 스펙 비교 & 샘플 동영상 통합 카드 -->
+  <div style="background: #F0F7FF; border: 1.5px solid #C4E0E5; border-radius: 12px; padding: 22px 20px;">
+    
+    <!-- [A] 스펙 비교 섹션 타이틀 -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div style="display: inline-block; background: #52B2BF; color: #FFFFFF; font-weight: 700; font-size: 15.5px; letter-spacing: .05em; padding: 6px 22px; border-radius: 6px;">
+        타입별 주요 스펙 비교
+      </div>
+    </div>
+
+    <!-- 스펙 비교 테이블 (여백 및 줄간격 확장) -->
+    <div style="overflow-x: auto; margin-bottom: 24px;">
+      <table style="width: 100%; border-collapse: collapse; background: #FFFFFF; border-radius: 8px; overflow: hidden; font-size: 13.5px; text-align: center; line-height: 1.6;">
+        <thead>
+          <tr style="background: #7EC8E3; color: #FFFFFF; font-weight: bold;">
+            <th style="padding: 12px 10px; width: 22%;">구분</th>
+            <th style="padding: 12px 10px; width: 26%;">SD simple</th>
+            <th style="padding: 12px 10px; width: 26%;">SD basic</th>
+            <th style="padding: 12px 10px; width: 26%;">LD basic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #EBF4F6;">
+            <td style="padding: 12px 10px; font-weight: bold; background: #F5F9FD; color: #357DED;">가격</td>
+            <td style="padding: 12px 10px; font-weight: bold;">000,000원</td>
+            <td style="padding: 12px 10px; font-weight: bold;">000,000원</td>
+            <td style="padding: 12px 10px; font-weight: bold; color: #357DED;">000,000원</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #EBF4F6;">
+            <td style="padding: 12px 10px; font-weight: bold; background: #F5F9FD; color: #357DED;">구동 범주 (축)</td>
+            <td style="padding: 12px 10px;">Y축 전용 모션</td>
+            <td style="padding: 12px 10px;">X축, Y축, XY 입체 대각 회전</td>
+            <td style="padding: 12px 10px; font-weight: bold;">X, Y, Z, XY, YZ 회전<br><span style="font-size: 12px; font-weight: normal; color: #555;">(각도 확대)</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #EBF4F6;">
+            <td style="padding: 12px 10px; font-weight: bold; background: #F5F9FD; color: #357DED;">눈 동작 / 시선</td>
+            <td style="padding: 12px 10px;">기본 눈 깜빡임</td>
+            <td style="padding: 12px 10px;">기본 눈 깜빡임</td>
+            <td style="padding: 12px 10px;">독립 깜빡임 + X/Y/XY 시선 추적 + 윙크</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #EBF4F6;">
+            <td style="padding: 12px 10px; font-weight: bold; background: #F5F9FD; color: #357DED;">입 & 표정 연출</td>
+            <td style="padding: 12px 10px;">기본 입 개폐<br><span style="font-size: 12px; color: #666;">(열림/닫힘)</span></td>
+            <td style="padding: 12px 10px;">기본 입 개폐<br><span style="font-size: 12px; color: #666;">(열림/닫힘)</span></td>
+            <td style="padding: 12px 10px;">발음별 입모양 + 미소 표정 연출</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 10px; font-weight: bold; background: #F5F9FD; color: #357DED;">물리 모션</td>
+            <td style="padding: 12px 10px;">기본 물리 연동</td>
+            <td style="padding: 12px 10px;">기본 물리 연동</td>
+            <td style="padding: 12px 10px;">기본 물리 연동 + 디테일 옵션 가능</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- [B] 구동 샘플 섹션 타이틀 & 탭 -->
+    <div style="text-align: center; margin-bottom: 18px;">
+      <div style="font-weight: 700; font-size: 15.5px; color: #357DED; margin-bottom: 14px;">
+        🎬 타입별 구동 샘플 동영상 보기
+      </div>
 
       <!-- 탭 버튼들 -->
-      <div class="tabs">
-        <label class="tab section-title" id="SD1-tab" for="SD1">SD simple</label>
-        <label class="tab section-title" id="SD2-tab" for="SD2">SD basic</label>
-        <label class="tab section-title" id="LD-tab" for="LD">LD basic</label>
+      <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+        
+        <button type="button" id="tab-btn-1" onclick="
+          document.getElementById('tab-panel-1').style.display='block';
+          document.getElementById('tab-panel-2').style.display='none';
+          document.getElementById('tab-panel-3').style.display='none';
+          this.style.background='#7EC8E3'; this.style.color='#FFFFFF'; this.style.opacity='1';
+          document.getElementById('tab-btn-2').style.background='#BEE3F8'; document.getElementById('tab-btn-2').style.color='#2B6CB0'; document.getElementById('tab-btn-2').style.opacity='0.7';
+          document.getElementById('tab-btn-3').style.background='#BEE3F8'; document.getElementById('tab-btn-3').style.color='#2B6CB0'; document.getElementById('tab-btn-3').style.opacity='0.7';
+        " style="cursor: pointer; padding: 8px 18px; background: #BEE3F8; color: #2B6CB0; font-weight: 700; font-size: 13.5px; border: none; border-radius: 6px; opacity: 0.7; transition: all 0.2s;">
+          SD simple 샘플
+        </button>
+
+        <button type="button" id="tab-btn-2" onclick="
+          document.getElementById('tab-panel-1').style.display='none';
+          document.getElementById('tab-panel-2').style.display='block';
+          document.getElementById('tab-panel-3').style.display='none';
+          this.style.background='#7EC8E3'; this.style.color='#FFFFFF'; this.style.opacity='1';
+          document.getElementById('tab-btn-1').style.background='#BEE3F8'; document.getElementById('tab-btn-1').style.color='#2B6CB0'; document.getElementById('tab-btn-1').style.opacity='0.7';
+          document.getElementById('tab-btn-3').style.background='#BEE3F8'; document.getElementById('tab-btn-3').style.color='#2B6CB0'; document.getElementById('tab-btn-3').style.opacity='0.7';
+        " style="cursor: pointer; padding: 8px 18px; background: #7EC8E3; color: #FFFFFF; font-weight: 700; font-size: 13.5px; border: none; border-radius: 6px; opacity: 1; transition: all 0.2s;">
+          SD basic 샘플
+        </button>
+
+        <button type="button" id="tab-btn-3" onclick="
+          document.getElementById('tab-panel-1').style.display='none';
+          document.getElementById('tab-panel-2').style.display='none';
+          document.getElementById('tab-panel-3').style.display='block';
+          this.style.background='#7EC8E3'; this.style.color='#FFFFFF'; this.style.opacity='1';
+          document.getElementById('tab-btn-1').style.background='#BEE3F8'; document.getElementById('tab-btn-1').style.color='#2B6CB0'; document.getElementById('tab-btn-1').style.opacity='0.7';
+          document.getElementById('tab-btn-2').style.background='#BEE3F8'; document.getElementById('tab-btn-2').style.color='#2B6CB0'; document.getElementById('tab-btn-2').style.opacity='0.7';
+        " style="cursor: pointer; padding: 8px 18px; background: #BEE3F8; color: #2B6CB0; font-weight: 700; font-size: 13.5px; border: none; border-radius: 6px; opacity: 0.7; transition: all 0.2s;">
+          LD basic 샘플
+        </button>
+
       </div>
 
-      <!-- 패널 콘텐츠 -->
-      <div class="panels part1">
-        <div class="panel" id="SD1-panel">
-          <div class="panel-title">첫번째 (SD simple)</div>
-          <p>첫번째 탭 내용입니다.</p>
+      <!-- 탭 패널 박스 -->
+      <div style="background: #FFFFFF; border: 1px solid #E1EEF6; border-radius: 8px; padding: 14px 16px; text-align: left;">
+        
+        <!-- 1. SD simple 샘플 탭 -->
+        <div id="tab-panel-1" style="display: none;">
+          <h4 style="color: #4A90E2; margin: 0 0 10px 0; border-left: 3px solid #7EC8E3; padding-left: 8px; font-size: 14px;">SD simple 시연 영상</h4>
+          <table style="width: 100%; border-collapse: separate; border-spacing: 8px; table-layout: fixed;">
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">Y축 모션 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_Y.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 Y축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">눈 깜빡임 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_eye-closed.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 눈 깜빡임 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">입 개폐 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_mouse.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 입 개폐 영상</div>
+              </td>
+            </tr>
+          </table>
         </div>
-        <div class="panel" id="SD2-panel">
-          <div class="panel-title">두번째 (SD basic)</div>
-          <p>두번째 탭 내용입니다.</p>
+
+        <!-- 2. SD basic 샘플 탭 -->
+        <div id="tab-panel-2" style="display: block;">
+          <h4 style="color: #4A90E2; margin: 0 0 10px 0; border-left: 3px solid #7EC8E3; padding-left: 8px; font-size: 14px;">SD basic 시연 영상</h4>
+          <table style="width: 100%; border-collapse: separate; border-spacing: 8px; table-layout: fixed;">
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">X축 회전 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_X.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 X축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">Y축 모션 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_basicY.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 Y축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">XY 입체 대각 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_XY.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 XY 대각 영상</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">눈 깜빡임 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_eye-closed.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 눈 깜빡임 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">입 개폐 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_mouse.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 입 개폐 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; color: #2D3748; line-height: 1.4;">추가 항목 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(SD_sample6.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 추가 영상</div>
+              </td>
+            </tr>
+          </table>
         </div>
-        <div class="panel" id="LD-panel">
-          <div class="panel-title">세번째 (LD basic)</div>
-          <p>세번째 탭 내용입니다.</p>
+
+        <!-- 3. LD basic 샘플 탭 -->
+        <div id="tab-panel-3" style="display: none;">
+          
+          <h4 style="color: #4A90E2; margin: 0 0 10px 0; border-left: 3px solid #7EC8E3; padding-left: 8px; font-size: 14px;">1. 회전 축 &amp; 호흡</h4>
+          <table style="width: 100%; border-collapse: separate; border-spacing: 8px; table-layout: fixed; margin-bottom: 12px;">
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">X축 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_X.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 X축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">Y축 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_Y.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 Y축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">Z축 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_Z.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 Z축 영상</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">호흡 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_base.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 호흡 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">XY축 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_XY.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 XY축 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">YZ축 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_YZ.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 YZ축 영상</div>
+              </td>
+            </tr>
+          </table>
+
+          <h4 style="color: #4A90E2; margin: 14px 0 10px 0; border-left: 3px solid #7EC8E3; padding-left: 8px; font-size: 14px;">2. 표정 연출</h4>
+          <table style="width: 100%; border-collapse: separate; border-spacing: 8px; table-layout: fixed; margin-bottom: 12px;">
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">표정 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_smile.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 표정 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">윙크 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_Wink.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 윙크 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">입모양 <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_mouse.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 입모양 영상</div>
+              </td>
+            </tr>
+          </table>
+
+          <h4 style="color: #4A90E2; margin: 14px 0 10px 0; border-left: 3px solid #7EC8E3; padding-left: 8px; font-size: 14px;">3. 눈 세부 움직임</h4>
+          <table style="width: 100%; border-collapse: separate; border-spacing: 8px; table-layout: fixed;">
+            <tr>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">눈 X <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_eyeX.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 눈 X 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">눈 XY <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_eyeXY.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 눈 XY 영상</div>
+              </td>
+              <td style="width: 33.33%; background: #F7FAFC; padding: 10px 6px; border-radius: 6px; text-align: center; vertical-align: top;">
+                <p style="font-weight: bold; margin: 0 0 6px 0; font-size: 12px; line-height: 1.4;">눈 Y <br><span style="font-size: 10px; color: #718096; font-weight: normal;">(LD_eyeY.mp4)</span></p>
+                <div style="background: #EBF8FF; border: 1px dashed #BEE3F8; border-radius: 4px; padding: 12px 4px; color: #3182CE; font-size: 11.5px; font-weight: bold;">🎥 눈 Y 영상</div>
+              </td>
+            </tr>
+          </table>
+
         </div>
+
       </div>
 
     </div>
+
+
+    <!-- [C] Plus 추가 옵션 영역 -->
+    <div style="background: #FFFFFF; border: 1px solid #E1EEF6; border-radius: 8px; padding: 14px 16px; margin-top: 16px;">
+      <div style="font-weight: 700; color: #4A90E2; font-size: 14px; margin-bottom: 10px;">
+        ✨ Plus 추가 옵션 <span style="font-size: 12px; color: #718096; font-weight: normal; margin-left: 4px;">(* LD basic 전용 / 한 번의 옵션 추가로 함께 구성)</span>
+      </div>
+
+      <div style="font-size: 13px; color: #3A4750; line-height: 1.6; background: #F7FAFC; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px;">
+        <div style="margin-bottom: 4px;"><strong>• LD plus 표정 추가 :</strong> 상황별 연출을 위한 다채로운 표정이 추가됩니다.</div>
+        <div><strong>• X축 범위 추가 :</strong> 좌우 가동범위가 대폭 확장되어 자연스러운 각도를 연출합니다.</div>
+      </div>
+
+      <table style="width: 100%; border-collapse: separate; border-spacing: 8px 0; text-align: center;">
+        <tr>
+          <td style="width: 50%; background: #F7FAFC; border: 1px dashed #BEE3F8; border-radius: 6px; padding: 10px 6px; vertical-align: middle;">
+            <div style="font-weight: bold; font-size: 12px; color: #718096; margin-bottom: 3px;">[ X축 추가 미적용 ]</div>
+            <div style="font-size: 11.5px; color: #A0A0A0;">기본 가동범위 영상/이미지</div>
+          </td>
+          <td style="width: 50%; background: #EBF8FF; border: 1px solid #7EC8E3; border-radius: 6px; padding: 10px 6px; vertical-align: middle;">
+            <div style="font-weight: bold; font-size: 12px; color: #357DED; margin-bottom: 3px;">[ X축 추가 옵션 적용 ]</div>
+            <div style="font-size: 11.5px; color: #4A90E2;">확장 가동범위 영상/이미지</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
   </div>
 
+</div>
+
+</body>
+</html>
 </body>
 </html>
